@@ -1,0 +1,27 @@
+#!/bin/bash
+#$ -P bf528
+#$ -cwd
+#$ -pe omp 16
+source /etc/bashrc
+
+conda create -n conda_20210325
+
+# Activate environment
+conda activate conda_20210325
+
+# Check python module available:
+module avail python
+
+# Install python:
+conda install python=3.6.6
+
+# Install miniqc:
+pip install multiqc
+
+# Switch to python2:
+module load python2
+
+# load multiqc:
+module load multiqc
+
+multiqc /projectnb/bf528/users/tinman/Project3/programmer/featureCounts/count_files
