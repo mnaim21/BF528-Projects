@@ -1,0 +1,22 @@
+#!/bin/bash -l
+
+#$ -P bf528
+#$ -cwd
+#$ -j y
+#$ -pe mpi_16_tasks_per_node 16
+
+echo "Running job $JOB_ID"
+echo "Started: $(date +%F)"
+echo "Running in directory: $PWD"
+
+# your commands here
+
+#Making SRA tools available
+module load sratoolkit
+module load fastq
+
+#Converting from SRA to FASTQ
+fastq-dump -I --split-files PO_1.sra
+fastqc -o /projectnb/bf528/users/tinman/Project2/data_curator
+
+echo "Job finished: $(date +%F)"
