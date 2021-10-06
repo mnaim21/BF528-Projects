@@ -71,7 +71,7 @@ cells <- RenameIdents(cells, new_cluster_ids)
 png("umap_celltype.png")
 DimPlot(cells, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 dev.off()
-
+ 
 # Clustered Heatmap
 png("heatmap_celltype.png", height = 900, width = 1500)
 DoHeatmap(cells, features = top_markers$gene) + NoLegend()
