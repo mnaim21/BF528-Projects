@@ -1,0 +1,15 @@
+#GEO file downloaded
+#run_extract.qsub file created
+
+# Running qsub job to convert SRA to paired FASTQ:
+qsub run_extract.qsub
+
+# Checking if information is consistent between both files
+head P0_1_1.fastq 
+head P0_1_2.fastq 
+
+# Loading fastqc
+module load fastqc
+
+# Running fastqc [-o output directory]
+fastqc -o /projectnb2/bf528/users/tinman/project2/data_curator P0_1_1.fastq P0_1_2.fastq
